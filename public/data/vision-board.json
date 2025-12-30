@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "title": "2026 Vision Board",
+    "template": "minimal-cinematic"
+  },
+  "sections": [
+    {
+      "id": "professional",
+      "title": "Professional",
+      "images": ["/images/professional-1.jpg", "/images/professional-2.jpg"],
+      "statements": ["I build with confidence", "Dotnet is my craft", "Creating value daily"]
+    },
+    {
+      "id": "personal",
+      "title": "Personal",
+      "images": ["/images/personal-1.jpg", "/images/personal-2.jpg"],
+      "statements": ["I grow mindfully", "Balance is my strength", "Wellness is priority"]
+    },
+    {
+      "id": "relationships",
+      "title": "Relationships",
+      "images": ["/images/relationships-1.jpg", "/images/relationships-2.jpg"],
+      "statements": ["I nurture connections", "Love guides me", "Community matters"]
+    },
+    {
+      "id": "financial",
+      "title": "Financial",
+      "images": ["/images/financial-1.jpg", "/images/financial-2.jpg"],
+      "statements": ["I build wealth wisely", "Abundance flows naturally", "Freedom through planning"]
+    }
+  ],
+  "quotes": [
+    "The future belongs to those who believe in the beauty of their dreams.",
+    "Vision without action is merely a dream."
+  ]
+}
