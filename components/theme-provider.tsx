@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useState, useLayoutEffect } from 'react'
 
 type Theme = 'light' | 'dark'
 
@@ -13,22 +13,17 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('light')
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-    // Load theme from localStorage or default to light
+  const [theme, setThemeState] = useState<Theme>(() => {
+    // Initialize from localStorage on mount (only client-side)
+    if (typeof window === 'undefined') return 'light'
     const savedTheme = localStorage.getItem('vision-board-theme') as Theme
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-      setThemeState(savedTheme)
-      document.documentElement.setAttribute('data-theme', savedTheme)
-    } else {
-      // Default to light theme
-      setThemeState('light')
-      document.documentElement.setAttribute('data-theme', 'light')
-    }
-  }, [])
+    return savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'light'
+  })
+
+  // Use layout effect to prevent flash
+  useLayoutEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+  }, [theme])
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme)
@@ -39,11 +34,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
     setTheme(newTheme)
-  }
-
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return <>{children}</>
   }
 
   return (

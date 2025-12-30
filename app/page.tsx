@@ -53,8 +53,8 @@ export default function Home() {
 
   return (
     <div className="relative">
-      {/* Controls - Fixed at top */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
+      {/* Controls - Fixed position with responsive handling */}
+      <div className="fixed top-6 right-6 z-50 flex gap-3">
         <ThemeToggle />
         <ExportControls targetRef={boardRef} />
       </div>
