@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { VisionBoard } from '@/components/VisionBoard'
 import { ExportControls } from '@/components/ExportControls'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { VisionBoardData } from '@/lib/types'
 
 export default function Home() {
@@ -28,12 +29,12 @@ export default function Home() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center space-y-4">
-          <p className="text-red-600">{error}</p>
+          <p className="text-red-600 dark:text-red-400">{error}</p>
           <button
             onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800"
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:opacity-90 shadow-md"
           >
             Retry
           </button>
@@ -44,16 +45,17 @@ export default function Home() {
 
   if (!visionData) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <p className="text-gray-600">Loading your vision board...</p>
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <p className="text-muted-foreground">Loading your vision board...</p>
       </div>
     )
   }
 
   return (
     <div className="relative">
-      {/* Export Controls - Fixed at top */}
-      <div className="fixed top-4 right-4 z-50">
+      {/* Controls - Fixed position with responsive handling */}
+      <div className="fixed top-6 right-6 z-50 flex gap-3">
+        <ThemeToggle />
         <ExportControls targetRef={boardRef} />
       </div>
 

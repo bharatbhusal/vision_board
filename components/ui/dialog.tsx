@@ -13,7 +13,7 @@ const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div
-        className="fixed inset-0 bg-black/50"
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
         onClick={() => onOpenChange?.(false)}
         aria-hidden="true"
       />
@@ -31,7 +31,7 @@ const DialogContent = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "bg-white rounded-lg shadow-lg p-6 w-full max-w-lg mx-4",
+      "bg-card text-card-foreground rounded-lg shadow-xl border border-border p-6 w-full max-w-lg mx-4",
       className
     )}
     {...props}
@@ -70,7 +70,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-gray-500", className)}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ))

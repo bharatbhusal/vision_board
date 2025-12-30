@@ -5,7 +5,7 @@ import { toPng } from 'html-to-image'
 import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog'
 import { Select } from './ui/select'
-import { Download } from 'lucide-react'
+import { HiDownload } from 'react-icons/hi'
 import { ExportSize, ExportDimensions } from '@/lib/types'
 
 interface ExportControlsProps {
@@ -62,10 +62,10 @@ export function ExportControls({ targetRef }: ExportControlsProps) {
       <Button
         onClick={() => setIsDialogOpen(true)}
         size="lg"
-        className="gap-2"
+        className="gap-2 shadow-lg"
       >
-        <Download className="w-4 h-4" />
-        Export as Image
+        <HiDownload className="w-5 h-5" />
+        Export
       </Button>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

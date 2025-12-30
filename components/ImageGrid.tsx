@@ -14,7 +14,7 @@ export function ImageGrid({ images, className }: ImageGridProps) {
   return (
     <div className={cn("grid gap-2", className)}>
       {images.length === 1 && (
-        <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+        <div className="relative aspect-video w-full overflow-hidden rounded-md shadow-md">
           <Image
             src={images[0]}
             alt="Vision board image"
@@ -22,6 +22,7 @@ export function ImageGrid({ images, className }: ImageGridProps) {
             className="object-cover"
             unoptimized
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
         </div>
       )}
       {images.length === 2 && (
@@ -29,7 +30,7 @@ export function ImageGrid({ images, className }: ImageGridProps) {
           {images.map((img, idx) => (
             <div
               key={idx}
-              className="relative aspect-video w-full overflow-hidden rounded-lg"
+              className="relative aspect-video w-full overflow-hidden rounded-md shadow-md"
             >
               <Image
                 src={img}
@@ -38,6 +39,7 @@ export function ImageGrid({ images, className }: ImageGridProps) {
                 className="object-cover"
                 unoptimized
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
           ))}
         </>
@@ -47,7 +49,7 @@ export function ImageGrid({ images, className }: ImageGridProps) {
           {images.slice(0, 4).map((img, idx) => (
             <div
               key={idx}
-              className="relative aspect-square w-full overflow-hidden rounded-lg"
+              className="relative aspect-square w-full overflow-hidden rounded-md shadow-md"
             >
               <Image
                 src={img}
@@ -56,6 +58,7 @@ export function ImageGrid({ images, className }: ImageGridProps) {
                 className="object-cover"
                 unoptimized
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
           ))}
         </div>

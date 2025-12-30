@@ -5,18 +5,24 @@ A minimal, aesthetic, identity-focused static Next.js application for viewing an
 ## Features
 
 - 🎨 **Calm, Cinematic Design** - Neutral colors, clean typography, intentional spacing
+- 🌓 **Dark/Light Theme** - Seamless theme toggle with localStorage persistence
+- ✨ **GSAP Animations** - Smooth entrance and hover animations for cards
+- 🎯 **Vision Board Aesthetic** - Scattered collage layout with overlapping cards
 - 📱 **Fully Responsive** - Optimized for mobile, tablet, and desktop
 - 🖼️ **Image Export** - Export your vision board as wallpaper-ready images
 - 📝 **Data-Driven** - All content managed through JSON
 - ⚡ **Static Site** - Fast, deployable on Vercel
 - 🎯 **Template System** - Extensible architecture for future templates
+- ♿ **Accessible** - WCAG AA compliant contrast ratios and focus states
 
 ## Tech Stack
 
 - Next.js (App Router)
 - TypeScript
-- Tailwind CSS
-- html-to-image
+- Tailwind CSS with CSS Variables
+- GSAP for animations
+- react-icons for iconography
+- html-to-image for export functionality
 - Static generation only (no backend, no auth)
 
 ## Getting Started
@@ -133,6 +139,31 @@ This app is built as a **personal ritual tool**, not a productivity app.
 - No loud gradients
 - Calm, grounded, intentional
 - Spacing > decoration
+- Smooth, meaningful animations (not flashy)
+- True vision board aesthetic with scattered layout
+- Accessible color contrast in both themes
+
+## New Features
+
+### Theme System
+- Toggle between light and dark themes using the button in the top-right
+- Theme preference is saved to localStorage and persists across sessions
+- Smooth transitions between themes
+- All components are theme-aware with proper contrast ratios
+
+### GSAP Animations
+- Smooth entrance animations when cards first appear
+- Subtle hover effects with scale transformations
+- Staggered animations for a more natural feel
+- Animations are disabled during export to maintain quality
+
+### Vision Board Layout
+- Central title with prominent typography
+- Cards arranged in a scattered, collage-style layout
+- Slight rotation on cards for a physical vision board feel
+- Cards straighten on hover for better readability
+- Overlapping elements with proper z-index management
+- Fully responsive across all screen sizes
 
 ## License
 
