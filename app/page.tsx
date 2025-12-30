@@ -8,14 +8,39 @@ import { VisionBoardData } from '@/lib/types'
 export default function Home() {
   const boardRef = useRef<HTMLDivElement>(null)
   const [visionData, setVisionData] = useState<VisionBoardData | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     // Load vision board data from JSON
     fetch('/data/vision-board.json')
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Failed to load vision board data')
+        }
+        return res.json()
+      })
       .then((data) => setVisionData(data))
-      .catch((error) => console.error('Failed to load vision board data:', error))
+      .catch((error) => {
+        console.error('Failed to load vision board data:', error)
+        setError('Failed to load vision board. Please check the data file.')
+      })
   }, [])
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center space-y-4">
+          <p className="text-red-600">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-gray-900 text-white rounded-md hover:bg-gray-800"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   if (!visionData) {
     return (

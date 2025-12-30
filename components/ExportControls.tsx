@@ -22,11 +22,13 @@ export function ExportControls({ targetRef }: ExportControlsProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [exportSize, setExportSize] = useState<ExportSize>('desktop')
   const [isExporting, setIsExporting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleExport = async () => {
     if (!targetRef.current) return
 
     setIsExporting(true)
+    setError(null)
     try {
       const dimensions = EXPORT_DIMENSIONS[exportSize]
       
@@ -49,6 +51,7 @@ export function ExportControls({ targetRef }: ExportControlsProps) {
       setIsDialogOpen(false)
     } catch (error) {
       console.error('Failed to export image:', error)
+      setError('Failed to export image. Please try again.')
     } finally {
       setIsExporting(false)
     }
@@ -75,6 +78,12 @@ export function ExportControls({ targetRef }: ExportControlsProps) {
           </DialogHeader>
           
           <div className="space-y-4">
+            {error && (
+              <div className="p-3 rounded-md bg-red-50 border border-red-200 text-red-800 text-sm">
+                {error}
+              </div>
+            )}
+            
             <div className="space-y-2">
               <label htmlFor="export-size" className="text-sm font-medium">
                 Export Size

@@ -15,8 +15,11 @@ const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
       <div
         className="fixed inset-0 bg-black/50"
         onClick={() => onOpenChange?.(false)}
+        aria-hidden="true"
       />
-      <div className="relative z-50">{children}</div>
+      <div className="relative z-50" role="dialog" aria-modal="true">
+        {children}
+      </div>
     </div>
   )
 }
