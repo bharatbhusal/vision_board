@@ -25,7 +25,7 @@ export function MinimalCinematic({ data, className }: MinimalCinematicProps) {
           </h1>
           {data.quotes && data.quotes.length > 0 && (
             <blockquote className="text-base sm:text-lg md:text-xl text-gray-600 font-light italic max-w-3xl mx-auto">
-              "{data.quotes[0]}"
+              &ldquo;{data.quotes[0]}&rdquo;
             </blockquote>
           )}
         </header>
@@ -41,7 +41,7 @@ export function MinimalCinematic({ data, className }: MinimalCinematicProps) {
         {data.quotes && data.quotes.length > 1 && (
           <footer className="text-center pt-8 border-t border-gray-200">
             <blockquote className="text-sm sm:text-base md:text-lg text-gray-500 font-light italic">
-              "{data.quotes[1]}"
+              &ldquo;{data.quotes[1]}&rdquo;
             </blockquote>
           </footer>
         )}
